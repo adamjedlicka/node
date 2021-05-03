@@ -3,7 +3,9 @@ version: '3'
 services:
   app:
     build: .
-    environment:
-      PORT: 8080
+    command: npm run dev -- --inspect=0.0.0.0:9229
     ports:
       - 8080:8080
+      - 9229:9229
+    volumes:
+      - .:/app
