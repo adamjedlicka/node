@@ -1,11 +1,5 @@
 import { resolve } from './container.js'
 
-export const helloWorldController = () => {
-  return {
-    status: 200,
-    data: 'Hello, World!',
-  }
-}
 
 export const placeOrderController = async () => {
   const placeOrderSideEffect = resolve('placeOrderSideEffect')

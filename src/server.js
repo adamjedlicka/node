@@ -1,5 +1,5 @@
 import express from 'express'
-import { helloWorldController, placeOrderController } from './controllers.js'
+import { placeOrderController } from './controllers.js'
 
 const controller = (fn) => {
   return async (req, res) => {
@@ -11,6 +11,25 @@ const controller = (fn) => {
 
 export const server = express()
 
-server.get('/', controller(helloWorldController))
+server.set('view engine', 'ejs')
+
+server.get('/', (req, res) => {
+  res.render('index', {
+    user: {
+      name: 'Pepa',
+    },
+    users: [
+      {
+        name: 'Franta',
+      },
+      {
+        name: 'Lojza',
+      },
+      {
+        name: 'Líza',
+      },
+    ],
+  })
+})
 
 server.post('/place-order', controller(placeOrderController))
